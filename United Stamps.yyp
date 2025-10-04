@@ -48,6 +48,7 @@
     {"id":{"name":"spr_bullet","path":"sprites/spr_bullet/spr_bullet.yy",},},
     {"id":{"name":"spr_eagle","path":"sprites/spr_eagle/spr_eagle.yy",},},
     {"id":{"name":"spr_egg","path":"sprites/spr_egg/spr_egg.yy",},},
+    {"id":{"name":"spr_flags","path":"sprites/spr_flags/spr_flags.yy",},},
     {"id":{"name":"spr_player_gun","path":"sprites/spr_player_gun/spr_player_gun.yy",},},
     {"id":{"name":"spr_player_idle","path":"sprites/spr_player_idle/spr_player_idle.yy",},},
     {"id":{"name":"spr_player_jump","path":"sprites/spr_player_jump/spr_player_jump.yy",},},

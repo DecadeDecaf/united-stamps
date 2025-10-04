@@ -8,7 +8,7 @@
     "TileSerialiseData":[],
   },
   "name":"ts_tiles",
-  "out_columns":5,
+  "out_columns":7,
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
@@ -34,5 +34,5 @@
   "tileWidth":50,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":30,
+  "tile_count":55,
 }
