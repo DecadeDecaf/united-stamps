@@ -11,7 +11,7 @@ if (room == rm_menu) {
 	draw_text(720, 160, "CONTROLLER (RECOMMENDED):\n\nMOVE: LEFT STICK\nAIM: LEFT STICK\nJUMP: A\nSHOOT: X");
 	var _i = 0;
 	for (var _xx = 160; _xx < 960; _xx += 160) {
-		for (var _yy = 320; _yy < 470; _yy += 30) {
+		for (var _yy = 320; _yy < 520; _yy += 20) {
 			var _has = (sd.stamps[@ _i]);
 			var _txt = (_has ? g.state_names[@ _i] : "???");
 			var _col = (_has ? colors.white : colors.gray);
