@@ -23,7 +23,7 @@
   ],
   "name":"spr_eagle",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"sprites",
     "path":"folders/sprites.yy",
@@ -78,7 +78,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":50,
+    "yorigin":65,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

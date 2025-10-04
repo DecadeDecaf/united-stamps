@@ -18,7 +18,7 @@ if (behavior == "eagle") {
 	}
 	x -= xv;
 	if (eggs > 0 && cooldown <= 0 && x < cam.x + 300) {
-		var _egg = instance_create_depth(x, y + 30, depth + 1, obj_enemy);
+		var _egg = instance_create_depth(x, y + 15, depth + 1, obj_enemy);
 		_egg.sprite_index = spr_egg;
 		_egg.behavior = "egg";
 		_egg.yv = 0.25;
@@ -55,6 +55,58 @@ if (behavior == "yolk") {
 	if (yv < -0.4) { image_index = 0; }
 	else if (yv > 0.4) { image_index = 1; }
 	else { image_index = 2; }
+}
+
+if (behavior == "ufo") {
+	if (beam == -1) {
+		beam = instance_create_depth(x, y, depth + 1, obj_enemy);
+		beam.sprite_index = spr_ufo_beam;
+		beam.behavior = "beam";
+		beam.immaterial = true;
+		beam.ufo = id;
+	}
+}
+
+if (behavior == "beam") {
+	if (!instance_exists(ufo)) {
+		instance_destroy();
+		exit;
+	}
+}
+
+if (behavior == "corn dog") {
+	if (grounded) {
+		if (cooldown <= 0) {
+			xv = 5 * image_xscale;
+			yv = -10;
+			grounded = false;
+			image_index = 0;
+		}
+	} else {
+		var _cap = 30;
+		var _fric = 1.025;
+		var _grav = 0.35;
+		xv /= _fric;
+		xv = clamp(xv, -_cap, _cap);
+		yv += _grav;
+		yv = clamp(-_cap, yv, _cap);
+		x += xv;
+		y += yv;
+		var _ground = (bbox_bottom + 2);
+		if ((collision(bbox_left, _ground, true) || collision(bbox_right, _ground, true)) && yv >= 0) {
+			move_snap(0, 50);
+			grounded = true;
+			image_index = 1;
+			cooldown = 20;
+		}
+	}
+	if (grounded) {
+		if (x < obj_player.x - 40) {
+			image_xscale = 1;
+		} else if (x > obj_player.x + 40) {
+			image_xscale = -1;
+		}
+	}
 }
 
 if (cooldown > 0) {

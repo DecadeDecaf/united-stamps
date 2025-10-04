@@ -33,7 +33,7 @@ function player_die() {
 	if (!dead) {
 		dead = true;
 		alarm[0] = 90;
-		for (var _b = 0; _b < 50; _b += 7) {
+		for (var _b = 0; _b < 45; _b += 9) {
 			var _boom = instance_create_depth(x + random_range(-20, 20), y - 30 + random_range(-25, 25), depth - 1, obj_boom);
 			_boom.delay = _b;
 		}

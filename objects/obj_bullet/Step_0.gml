@@ -18,11 +18,13 @@ repeat (3) {
 	
 	with (obj_enemy) {
 		if (activated && position_meeting(_point_x, _point_y, id)) {
-			hp--;
-			flash = 4;
-			o.hit = true;
-			game_set_speed(40, gamespeed_fps);
-			break;
+			if (!immaterial) {
+				hp--;
+				flash = 4;
+				o.hit = true;
+				game_set_speed(40, gamespeed_fps);
+				break;
+			}
 		}
 	}
 

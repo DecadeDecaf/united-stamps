@@ -109,7 +109,8 @@ if (_shoot) {
 with (obj_stamp) {
 	if (place_meeting(x, y, o.id) && !sd.stamps[@ state_id]) {
 		sd.stamps[@ state_id] = true;
-		instance_destroy();
+		g.rich_txt = (g.state_names[@ state_id] + " COLLECTED!");
+		g.rich_txt_frame = 120;
 	}
 }
 

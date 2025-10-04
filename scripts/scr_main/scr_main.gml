@@ -31,25 +31,28 @@ function create_globals() {
 	
 	g.pause = false;
 	
+	g.rich_txt = "";
+	g.rich_txt_frame = 0;
+	
 	g.state_names = [
 		"ALASKA", "ALABAMA", "ARKANSAS", "ARIZONA", "CALIFORNIA",
 		"COLORADO", "CONNECTICUT", "DELAWARE", "FLORIDA", "GEORGIA",
-		"HAWAII", "IOWA", "IDAHO", "ILLINOIS", "INDIANA", "KANSAS",
-		"KENTUCKY", "", "", "", "",
-		"", "", "", "", "",
-		"", "", "", "", "",
-		"", "", "", "", "",
-		"", "", "", "", "",
-		"", "", "", "", "",
-		"", "", "", "", ""
+		"HAWAII", "IOWA", "IDAHO", "ILLINOIS", "INDIANA",
+		"KANSAS", "KENTUCKY", "LOUISIANA", "MASSACHUSETTS", "MARYLAND",
+		"MAINE", "MICHIGAN", "MINNESOTA", "MISSOURI", "MISSISSIPPI",
+		"MONTANA", "NORTH CAROLINA", "NORTH DAKOTA", "NEBRASKA", "NEW HAMPSHIRE",
+		"NEW JERSEY", "NEW MEXICO", "NEVADA", "NEW YORK", "OHIO",
+		"OKLAHOMA", "OREGON", "PENNSYLVANIA", "RHODE ISLAND", "SOUTH CAROLINA",
+		"SOUTH DAKOTA", "TENNESSEE", "TEXAS", "UTAH", "VIRGINIA",
+		"VERMONT", "WASHINGTON", "WISCONSIN", "WEST VIRGINIA", "WYOMING"
 	]
 	
 	g.solid_tiles = [
-		6, 11, 17, 20
+		3, 6, 8, 9, 11, 14, 17, 19, 20, 34, 39
 	];
 	
 	g.platform_tiles = [
-		5, 16, 18, 21
+		5, 16, 18, 21, 27, 28, 29, 30, 33, 35, 38, 45, 46, 47, 50, 51, 52
 	];
 	
 	g.gp_last = -1;

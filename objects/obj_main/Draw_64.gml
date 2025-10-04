@@ -21,3 +21,19 @@ if (room == rm_menu) {
 		}
 	}
 }
+
+if (g.rich_txt_frame > 0) {
+	var _yoff = 0;
+	if (g.rich_txt_frame <= 20) {
+		_yoff = (-3 * (20 - g.rich_txt_frame));
+	}
+	draw_set_font(fnt_regular);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	draw_set_color(colors.black);
+	draw_text(480, 52 + _yoff, g.rich_txt);
+	draw_text(480, 51 + _yoff, g.rich_txt);
+	draw_text(479, 50 + _yoff, g.rich_txt);
+	draw_set_color(colors.white);
+	draw_text(480, 50 + _yoff, g.rich_txt);
+}
