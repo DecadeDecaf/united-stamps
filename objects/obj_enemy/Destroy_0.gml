@@ -9,6 +9,7 @@ if (behavior == "egg") {
 	_yolk.yv = -yv / 2;
 	_yolk.hp = 3;
 	_yolk.drop_stamp = drop_stamp;
+	audio_play_sound(sfx_splat, 0, false, 0.2, 0, random_range(0.6, 0.7));
 	var _boom = instance_create_depth(x, y, depth - 1, obj_boom);
 	_boom.sprite_index = spr_splat;
 	exit;

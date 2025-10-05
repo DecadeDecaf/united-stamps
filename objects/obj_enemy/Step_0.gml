@@ -94,6 +94,7 @@ if (behavior == "corn dog") {
 			yv = -10;
 			grounded = false;
 			image_index = 0;
+			audio_play_sound(sfx_boing, 0, false, 0.25, 0, random_range(0.95, 1.05));
 		}
 	} else {
 		var _cap = 30;
@@ -187,6 +188,8 @@ if (behavior == "coin") {
 		yv *= -0.75;
 		if (abs(yv) < 4) {
 			yv = 0;
+		} else {
+			audio_play_sound(sfx_tink, 0, false, 0.2, 0, random_range(1.3, 1.4));
 		}
 	}
 	if (collision(bbox_left, y - yoff)) {

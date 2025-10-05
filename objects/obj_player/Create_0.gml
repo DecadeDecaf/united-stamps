@@ -8,7 +8,7 @@ control_loss = 0;
 grounded = 0;
 
 cooldown = 0;
-fire_rate = 7;
+fire_rate = 6.76691729323;
 
 xv = 0;
 yv = 0;

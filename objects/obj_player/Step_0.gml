@@ -98,11 +98,12 @@ if (_shoot) {
 		_dir += random_range(-3, 3);
 		var _xx = (x + lengthdir_x(60, _dir));
 		var _yy = (y - 30 + lengthdir_y(35, _dir));
+		audio_play_sound(sfx_shoot, 0, false, 0.25, 0, random_range(0.95, 1.05));
 		if (!collision(_xx, _yy)) {
 			var _bullet = instance_create_depth(_xx, _yy, depth - 1, obj_bullet);
 			_bullet.dir = _dir;
 		}
-		cooldown = fire_rate;
+		cooldown += fire_rate;
 	}
 }
 
@@ -113,6 +114,7 @@ with (obj_stamp) {
 		if (state_id == 30) { g.rich_txt = (g.state_names[@ state_id] + " MENTIONED!"); }
 		if (state_id == 34) { g.rich_txt = (g.state_names[@ state_id] + " COLLECTED! SKIBIDI RIZZ!"); }
 		g.rich_txt_frame = 120;
+		audio_play_sound(sfx_collect, 0, false, 0.35, 0, random_range(1.2, 1.35));
 	}
 }
 
