@@ -8,7 +8,7 @@ if (room == rm_menu) {
 				_count++;
 			}
 		}
-		g.bonus_lives = floor(_count / 10);
+		g.bonus_lives = floor(_count / 5);
 		audio_play_sound(mus_theme, 1, true);
 		room_goto(rm_game);
 	}
