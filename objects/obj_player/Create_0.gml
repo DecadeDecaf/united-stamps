@@ -14,3 +14,4 @@ xv = 0;
 yv = 0;
 
 dead = false;
+iframes = 0;

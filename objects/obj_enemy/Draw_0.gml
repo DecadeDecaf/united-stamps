@@ -11,7 +11,11 @@ if (behavior == "corn dog") {
 }
 
 if (behavior == "tractor") {
-	_long -= (cooldown * -0.0025 & xv);
+	_long -= (cooldown * -0.0025 * xv);
+}
+
+if (behavior == "white house") {
+	_long -= (spawned * -0.0015);
 }
 
 if (drop_stamp != -1 && sd.won) {

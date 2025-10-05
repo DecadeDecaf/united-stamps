@@ -32,6 +32,8 @@ function create_globals() {
 	
 	g.pause = false;
 	
+	g.bonus_lives = 0;
+	
 	g.rich_txt = "";
 	g.rich_txt_frame = 0;
 	
@@ -49,11 +51,11 @@ function create_globals() {
 	]
 	
 	g.solid_tiles = [
-		3, 6, 8, 9, 11, 14, 17, 19, 20, 34, 39, 48, 53
+		3, 6, 8, 9, 11, 14, 17, 19, 20, 48, 53
 	];
 	
 	g.platform_tiles = [
-		5, 16, 18, 21, 27, 28, 29, 30, 33, 35, 38, 45, 46, 47, 49, 50, 51, 52, 55, 58, 59, 62, 63, 64, 69
+		5, 16, 18, 21, 27, 28, 29, 30, 33, 34, 35, 38, 45, 46, 47, 49, 50, 51, 52, 55, 58, 59, 62, 63, 64, 69
 	];
 	
 	g.gp_last = -1;
@@ -321,8 +323,6 @@ function lookat_camera() {
 
 	x = _cx;
 	y = _cy;
-	
-	print(_cy);
 
 	var _vm = matrix_build_lookat(_cx, _cy, -10, _cx, _cy, 0, 0, 1, 0);
 	camera_set_view_mat(camera, _vm);

@@ -38,3 +38,7 @@ if (g.rich_txt_frame > 0) {
 	draw_set_color(colors.white);
 	draw_text(480, 50 + _yoff, g.rich_txt);
 }
+
+for (var _h = 0; _h < g.bonus_lives; _h++) {
+	draw_sprite(spr_heart, 0, 70 + (_h * 23), 70 - (_h * 2));
+}

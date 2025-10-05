@@ -8,6 +8,12 @@ if (!activated) {
 
 if (hp <= 0) {
 	instance_destroy();
+	exit;
+}
+
+if (image_xscale > 0 && image_xscale < 1) {
+	image_xscale += 0.05;
+	image_yscale += 0.05;
 }
 
 if (behavior == "eagle") {
@@ -31,18 +37,17 @@ if (behavior == "eagle") {
 }
 
 if (behavior == "egg") {
-	if (image_xscale < 1) {
-		image_xscale += 0.05;
-		image_yscale += 0.05;
-	}
 	yv *= 1.0225;
 	y += yv;
 	if (any_collision()) {
+		drop_stamp = -1;
 		instance_destroy();
+		exit;
 	}
 }
 
 if (behavior == "yolk") {
+	yoff = 10;
 	if (!landed) {
 		yv += 0.075;
 		y += yv;
@@ -58,16 +63,23 @@ if (behavior == "yolk") {
 }
 
 if (behavior == "ufo") {
+	yoff = 350;
 	if (beam == -1) {
-		beam = instance_create_depth(x, y, depth + 1, obj_enemy);
+		beam = instance_create_depth(x, y, depth + 101, obj_enemy);
 		beam.sprite_index = spr_ufo_beam;
 		beam.behavior = "beam";
 		beam.immaterial = true;
 		beam.ufo = id;
+		beam.alternate = alternate;
 	}
 }
 
 if (behavior == "beam") {
+	if (g.fc % 150 < 75) {
+		image_index = (alternate ? 1 : 0);
+	} else {
+		image_index = (alternate ? 0 : 1);
+	}
 	if (!instance_exists(ufo)) {
 		instance_destroy();
 		exit;
@@ -75,7 +87,7 @@ if (behavior == "beam") {
 }
 
 if (behavior == "corn dog") {
-	yoff = 25;
+	yoff = 30;
 	if (grounded) {
 		if (cooldown <= 0) {
 			xv = 5 * image_xscale;
@@ -92,6 +104,11 @@ if (behavior == "corn dog") {
 		yv += _grav;
 		yv = clamp(-_cap, yv, _cap);
 		x += xv;
+		if (collision(bbox_left, y - yoff) || collision(bbox_right, y - yoff)) {
+			drop_stamp = -1;
+			instance_destroy();
+			exit;
+		}
 		y += yv;
 		var _ground = (bbox_bottom + 2);
 		if ((collision(bbox_left, _ground, true) || collision(bbox_right, _ground, true)) && yv >= 0) {
@@ -127,6 +144,127 @@ if (behavior == "football") {
 	x -= 5;
 	if (any_collision(true)) {
 		instance_destroy();
+	}
+}
+
+if (behavior == "baseball") {
+	yoff = 15;
+	var _cap = 30;
+	var _fric = 1.015;
+	var _grav = 0.5;
+	xv /= _fric;
+	xv = clamp(xv, -_cap, _cap);
+	yv += _grav;
+	yv = clamp(-_cap, yv, _cap);
+	x += xv;
+	y += yv;
+	var _ground = (bbox_bottom + 2);
+	if ((collision(bbox_left, _ground, true) || collision(bbox_right, _ground, true)) && yv >= 0) {
+		move_snap(0, 50);
+		yv *= -0.75;
+		if (abs(yv) < 4) {
+			drop_stamp = -1;
+			instance_destroy();
+			exit;
+		}
+	}
+}
+
+if (behavior == "coin") {
+	yoff = (sprite_index == spr_quarter ? 20 : 15);
+	var _cap = 30;
+	var _fric = 1;
+	var _grav = 0.5;
+	xv /= _fric;
+	xv = clamp(xv, -_cap, _cap);
+	yv += _grav;
+	yv = clamp(-_cap, yv, _cap);
+	x += xv;
+	y += yv;
+	var _ground = (bbox_bottom + 2);
+	if ((collision(bbox_left, _ground, true) || collision(bbox_right, _ground, true)) && yv >= 0) {
+		move_snap(0, 50);
+		yv *= -0.75;
+		if (abs(yv) < 4) {
+			yv = 0;
+		}
+	}
+	if (collision(bbox_left, y - yoff)) {
+		drop_stamp = -1;
+		instance_destroy();
+		exit;
+	}
+}
+
+if (behavior == "white house") {
+	yoff = 100;
+	if (cooldown <= 0) {
+		cooldown = (irandom_range(0, 3) == 0 ? 30 : 120);
+		var _spawn_rand = irandom_range(0, 9);
+		var _spawn;
+		switch (_spawn_rand) {
+			default:
+			case 0:
+				_spawn = instance_create_depth(x - 40, y - 100, depth - 1, obj_enemy);
+				_spawn.sprite_index = spr_eagle;
+				_spawn.behavior = "eagle";
+				_spawn.hp = 5;
+				_spawn.image_xscale = 0.5;
+				_spawn.image_yscale = 0.5;
+				cooldown = 120;
+				break;
+			case 1:
+			case 2:
+				_spawn = instance_create_depth(x - 40, y - 100, depth - 1, obj_enemy);
+				_spawn.sprite_index = spr_football;
+				_spawn.behavior = "football";
+				_spawn.hp = 3;
+				_spawn.image_xscale = 0.5;
+				_spawn.image_yscale = 0.5;
+				break;
+			case 3:
+			case 4:
+				_spawn = instance_create_depth(x - 40, y - 30, depth - 1, obj_enemy);
+				_spawn.sprite_index = spr_football;
+				_spawn.behavior = "football";
+				_spawn.hp = 3;
+				_spawn.image_xscale = 0.5;
+				_spawn.image_yscale = 0.5;
+				break;
+			case 5:
+			case 6:
+				_spawn = instance_create_depth(x - 40, y - 80, depth - 1, obj_enemy);
+				_spawn.sprite_index = spr_penny;
+				_spawn.behavior = "coin";
+				_spawn.hp = 3;
+				_spawn.xv = -5;
+				_spawn.image_xscale = 0.5;
+				_spawn.image_yscale = 0.5;
+				break;
+			case 7:
+			case 8:
+				_spawn = instance_create_depth(x - 40, y - 30, depth - 1, obj_enemy);
+				_spawn.sprite_index = spr_nickel;
+				_spawn.behavior = "coin";
+				_spawn.hp = 3;
+				_spawn.xv = -3.5;
+				_spawn.yv = -3;
+				_spawn.image_xscale = 0.5;
+				_spawn.image_yscale = 0.5;
+				break;
+			case 9:
+				_spawn = instance_create_depth(x - 40, y - 30, depth - 1, obj_enemy);
+				_spawn.sprite_index = spr_corndog;
+				_spawn.behavior = "corn dog";
+				_spawn.hp = 3;
+				_spawn.image_xscale = -1
+				cooldown = 120;
+				break;
+		}
+		spawned = 30;
+	}
+	if (spawned > 0) {
+		spawned--;
 	}
 }
 

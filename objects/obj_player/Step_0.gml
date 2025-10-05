@@ -110,15 +110,29 @@ with (obj_stamp) {
 	if (place_meeting(x, y, o.id) && !sd.stamps[@ state_id]) {
 		sd.stamps[@ state_id] = true;
 		g.rich_txt = (g.state_names[@ state_id] + " COLLECTED!");
+		if (state_id == 30) { g.rich_txt = (g.state_names[@ state_id] + " MENTIONED!"); }
+		if (state_id == 34) { g.rich_txt = (g.state_names[@ state_id] + " COLLECTED! SKIBIDI RIZZ!"); }
 		g.rich_txt_frame = 120;
 	}
 }
 
-with (obj_enemy) {
-	if (place_meeting(x, y, o) && activated) {
-		with (o) {
-			player_die();
+if (iframes <= 0) {
+	with (obj_enemy) {
+		if (place_meeting(x, y, o) && activated && !harmless) {
+			with (o) {
+				player_die();
+			}
+			break;
 		}
+	}
+} else {
+	iframes--;
+}
+
+with (obj_burger) {
+	if (place_meeting(x, y, o)) {
+		o.yv = -16;
+		bounce_yv = -7;
 		break;
 	}
 }

@@ -60,7 +60,7 @@
     },
     "name":"spr_ufo_beam",
     "playback":1,
-    "playbackSpeed":0.8,
+    "playbackSpeed":0.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

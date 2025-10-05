@@ -23,7 +23,7 @@
   ],
   "name":"spr_ufo",
   "nineSlice":null,
-  "origin":7,
+  "origin":9,
   "parent":{
     "name":"sprites",
     "path":"folders/sprites.yy",
@@ -77,7 +77,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":100,
+    "xorigin":103,
     "yorigin":400,
   },
   "swatchColours":null,

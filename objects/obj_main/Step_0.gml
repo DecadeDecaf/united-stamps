@@ -2,6 +2,13 @@ if (room == rm_menu) {
 	var _start = controls_check_pressed("jump");
 
 	if (_start) {
+		var _count = 0;
+		for (var _i = 0; _i < 50; _i++) {
+			if (sd.stamps[@ _i]) {
+				_count++;
+			}
+		}
+		g.bonus_lives = floor(_count / 10);
 		room_goto(rm_game);
 	}
 }

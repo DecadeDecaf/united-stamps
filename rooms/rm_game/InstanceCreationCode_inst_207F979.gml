@@ -4,4 +4,4 @@ hp = 4;
 
 drop_stamp = 14;
 
-activation_x = (x + 580);
+activation_x = (x + 530);

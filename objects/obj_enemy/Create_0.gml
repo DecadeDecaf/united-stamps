@@ -1,4 +1,5 @@
 activated = false;
+deathrattle = true;
 
 behavior = "";
 hp = 1;
@@ -20,6 +21,9 @@ immune = false;
 immaterial = false;
 ufo = -1;
 beam = -1;
+alternate = false
+spawned = 0;
+harmless = false;
 
 yoff = 0;
 

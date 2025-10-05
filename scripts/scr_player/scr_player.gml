@@ -3,6 +3,7 @@ function collision(_xx, _yy, _platform = false) {
 	var _map = layer_tilemap_get_id(_lay);
 
 	var _tile = tilemap_get_at_pixel(_map, _xx, _yy);
+	var _tile_cell = tilemap_get_cell_y_at_pixel(_map, _xx, _yy);
 	var _coll = false;
 
 	if (array_has(g.solid_tiles, _tile)) {
@@ -11,7 +12,8 @@ function collision(_xx, _yy, _platform = false) {
 	
 	if (_platform) {
 		var _knee_tile = tilemap_get_at_pixel(_map, _xx, _yy - max(yv, 4));
-		if (array_has(g.platform_tiles, _tile) && (_knee_tile != _tile) && yv >= 0) {
+		var _knee_tile_cell = tilemap_get_cell_y_at_pixel(_map, _xx, _yy - max(yv, 4));
+		if (array_has(g.platform_tiles, _tile) && (_knee_tile_cell != _tile_cell) && yv >= 0) {
 			_coll = true;
 		}
 	}
