@@ -9,6 +9,7 @@ if (room == rm_menu) {
 			}
 		}
 		g.bonus_lives = floor(_count / 10);
+		audio_play_sound(mus_theme, 1, true);
 		room_goto(rm_game);
 	}
 }

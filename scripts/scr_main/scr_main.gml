@@ -96,7 +96,7 @@ function create_savefile() {
 		jump: gp_face1,
 		shoot: gp_face3
 	};
-	sd.won = true;
+	sd.won = false;
 	sd.stamps = [
 		false, false, false, false, false,
 		false, false, false, false, false,

@@ -44,6 +44,7 @@
     {"id":{"name":"scr_main","path":"scripts/scr_main/scr_main.yy",},},
     {"id":{"name":"scr_player","path":"scripts/scr_player/scr_player.yy",},},
     {"id":{"name":"scr_util","path":"scripts/scr_util/scr_util.yy",},},
+    {"id":{"name":"mus_theme","path":"sounds/mus_theme/mus_theme.yy",},},
     {"id":{"name":"bg_sky","path":"sprites/bg_sky/bg_sky.yy",},},
     {"id":{"name":"spr_baseball","path":"sprites/spr_baseball/spr_baseball.yy",},},
     {"id":{"name":"spr_boom","path":"sprites/spr_boom/spr_boom.yy",},},

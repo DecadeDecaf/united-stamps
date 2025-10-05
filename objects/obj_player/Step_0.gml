@@ -136,3 +136,10 @@ with (obj_burger) {
 		break;
 	}
 }
+
+if (bbox_left < cam.x - 480) {
+	x = (cam.x - 480 + 20);
+	if (collision(bbox_right, y - 20)) {
+		player_die();
+	}
+}

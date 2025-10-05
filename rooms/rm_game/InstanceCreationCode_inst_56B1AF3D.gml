@@ -1,1 +1,1 @@
-vx = 8100; x = vx; obj_player.x = x;
+// vx = 8100; x = vx; obj_player.x = x;
