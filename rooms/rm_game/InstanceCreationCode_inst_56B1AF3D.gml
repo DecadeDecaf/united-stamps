@@ -1,0 +1,1 @@
+vx = 8200; x = vx; obj_player.x = x;

@@ -1,4 +1,5 @@
 dir = 0;
-spd = 5;
+spd = 3;
+life = 150;
 
 hit = false;

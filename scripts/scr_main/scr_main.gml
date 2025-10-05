@@ -20,7 +20,8 @@ function create_globals() {
 	g.g_cols = {
 		white: #F2FBFF,
 		black: #0F0F12,
-		gray: #505359
+		gray: #505359,
+		neon: #CBFF70
 	};
 	
 	#macro colors g.g_cols
@@ -48,11 +49,11 @@ function create_globals() {
 	]
 	
 	g.solid_tiles = [
-		3, 6, 8, 9, 11, 14, 17, 19, 20, 34, 39
+		3, 6, 8, 9, 11, 14, 17, 19, 20, 34, 39, 48, 53
 	];
 	
 	g.platform_tiles = [
-		5, 16, 18, 21, 27, 28, 29, 30, 33, 35, 38, 45, 46, 47, 50, 51, 52
+		5, 16, 18, 21, 27, 28, 29, 30, 33, 35, 38, 45, 46, 47, 49, 50, 51, 52, 55, 58, 59, 62, 63, 64, 69
 	];
 	
 	g.gp_last = -1;
@@ -93,6 +94,7 @@ function create_savefile() {
 		jump: gp_face1,
 		shoot: gp_face3
 	};
+	sd.won = true;
 	sd.stamps = [
 		false, false, false, false, false,
 		false, false, false, false, false,

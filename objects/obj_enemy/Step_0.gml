@@ -1,5 +1,5 @@
 if (!activated) {
-	if (cam.x > x - 540) {
+	if (cam.x > activation_x) {
 		activated = true;
 	} else {
 		exit;
@@ -14,7 +14,7 @@ if (behavior == "eagle") {
 	if (eggs > 0) {
 		xv = 2.5;
 	} else if (xv > 0.5) {
-		xv -= 0.025;
+		xv /= 1.005;
 	}
 	x -= xv;
 	if (eggs > 0 && cooldown <= 0 && x < cam.x + 300) {
@@ -22,7 +22,7 @@ if (behavior == "eagle") {
 		_egg.sprite_index = spr_egg;
 		_egg.behavior = "egg";
 		_egg.yv = 0.25;
-		_egg.hp = 3;
+		_egg.hp = 2;
 		_egg.image_xscale = 0.5;
 		_egg.image_yscale = 0.5;
 		cooldown = 55;
@@ -75,6 +75,7 @@ if (behavior == "beam") {
 }
 
 if (behavior == "corn dog") {
+	yoff = 25;
 	if (grounded) {
 		if (cooldown <= 0) {
 			xv = 5 * image_xscale;
@@ -109,10 +110,43 @@ if (behavior == "corn dog") {
 	}
 }
 
+if (behavior == "tractor") {
+	yoff = 50;
+	if (x > 6200) {
+		xv /= 1.035;
+	} else {
+		xv = 2;
+	}
+	x += xv;
+	if (cooldown <= 0) {
+		cooldown = 20;
+	}
+}
+
+if (behavior == "football") {
+	x -= 5;
+	if (any_collision(true)) {
+		instance_destroy();
+	}
+}
+
 if (cooldown > 0) {
 	cooldown--;
 }
 
 if (flash > 0) {
 	flash--;
+}
+
+if (drop_stamp != -1 && sd.won) {
+	if (g.fc % 4 == 0) {
+		var _sparkle = instance_create_depth(x + random_range(-20, 20), y - yoff + random_range(-25, 25), depth, obj_sparkle);
+		if (irandom_range(0, 1) == 0) {
+			_sparkle.sprite_index = spr_sparkle_neon;
+			_sparkle.depth++;
+		} else {
+			_sparkle.sprite_index = spr_sparkle_white;
+			_sparkle.depth--;
+		}
+	}
 }

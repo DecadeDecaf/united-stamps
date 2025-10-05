@@ -7,7 +7,7 @@ if (hit) {
 	exit;
 }
 
-repeat (3) {
+repeat (5) {
 	x += lengthdir_x(spd, dir);
 	y += lengthdir_y(spd, dir);
 
@@ -19,23 +19,28 @@ repeat (3) {
 	with (obj_enemy) {
 		if (activated && position_meeting(_point_x, _point_y, id)) {
 			if (!immaterial) {
-				hp--;
-				flash = 4;
+				if (!immune) {
+					hp--;
+					flash = 4;
+					game_set_speed(40, gamespeed_fps);
+				}
 				o.hit = true;
-				game_set_speed(40, gamespeed_fps);
 				break;
 			}
 		}
 	}
 
-	if (!hit && collision(_point_x, _point_y)) {
+	if (!hit && (collision(_point_x, _point_y) || life <= 0)) {
 		hit = true;
 	}
+	
+	life--;
 	
 	if (hit) {
 		x = _point_x;
 		y = _point_y;
 		sprite_index = spr_bullet_hit;
 		image_angle = random_range(0, 360);
+		break;
 	}
 }

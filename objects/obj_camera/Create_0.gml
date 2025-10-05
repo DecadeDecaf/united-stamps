@@ -3,7 +3,7 @@ camera = camera_create();
 vx = 576;
 vy = 810;
 
-cam_speed = 0.75;
+cam_speed = 1;
 
 x = vx;
 y = vy;

@@ -95,9 +95,9 @@ if (_shoot) {
 	if (cooldown <= 0) {
 		var _flip = (image_xscale < 0);
 		var _dir = (_up ? (_flip ? 135 : 45) : (_flip ? 180 : 0));
-		_dir += random_range(-2.5, 2.5);
-		var _xx = (x + lengthdir_x(75, _dir));
-		var _yy = (y - 28 + lengthdir_y(50, _dir));
+		_dir += random_range(-3, 3);
+		var _xx = (x + lengthdir_x(60, _dir));
+		var _yy = (y - 30 + lengthdir_y(35, _dir));
 		if (!collision(_xx, _yy)) {
 			var _bullet = instance_create_depth(_xx, _yy, depth - 1, obj_bullet);
 			_bullet.dir = _dir;
@@ -114,6 +114,11 @@ with (obj_stamp) {
 	}
 }
 
-if (place_meeting(x, y, obj_enemy)) {
-	player_die();
+with (obj_enemy) {
+	if (place_meeting(x, y, o) && activated) {
+		with (o) {
+			player_die();
+		}
+		break;
+	}
 }
