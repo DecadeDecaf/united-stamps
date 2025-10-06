@@ -133,6 +133,7 @@ if (iframes <= 0) {
 
 with (obj_burger) {
 	if (place_meeting(x, y, o)) {
+		audio_play_sound(sfx_boing, 0, false, 0.25, 0, random_range(0.95, 1.05));
 		o.yv = -16;
 		bounce_yv = -7;
 		break;
